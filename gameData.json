@@ -1,18 +1,20 @@
-{
-    "id": "modal1",
-    "thumbnail": "game1_thumbnail.jpg",
-    "title": "Game 1 Title",
-    "description": "Detailed description of Game 1."
-},
-{
-    "id": "modal2",
-    "thumbnail": "game2_thumbnail.jpg",
-    "title": "Game 2 Title",
-    "description": "Detailed description of Game 2."
-},
-{
-    "id": "modal3",
-    "thumbnail": "game3_thumbnail.jpg",
-    "title": "Game 3 Title",
-    "description": "Detailed description of Game 3."
-}
+[
+    {
+        "id": "modal1",
+        "thumbnail": "game1_thumbnail.jpg",
+        "title": "Game 1 Title",
+        "description": "Detailed description of Game 1."
+    },
+    {
+        "id": "modal2",
+        "thumbnail": "game2_thumbnail.jpg",
+        "title": "Game 2 Title",
+        "description": "Detailed description of Game 2."
+    },
+    {
+        "id": "modal3",
+        "thumbnail": "game3_thumbnail.jpg",
+        "title": "Game 3 Title",
+        "description": "Detailed description of Game 3."
+    }
+]

@@ -105,10 +105,8 @@
 <body>
     <h1>Game Development Portfolio</h1>
     <div class="container" id="gamesContainer">
-        <!-- Game cards will be dynamically added here -->
     </div>
 
-    <!-- Modal for Game Details -->
     <div id="gameModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('gameModal')">&times;</span>
@@ -118,14 +116,19 @@
     </div>
 
     <script>
-        // Function to fetch JSON data from file
-        async function fetchGameData() {
-            const response = await fetch('./gameData.json');
-            const data = await response.json();
-            return data;
-        }
+        // XMLHttpRequestを使ってjsonデータを読み込む
+        let requestURL = 'gameData.json';
+        let request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
 
-        // Function to create game cards
+        // JSONデータをJavaScriptオブジェクトに変換してゲームカードを生成
+        request.onload = function () {
+            let data = request.response;
+            renderGameCards(data);
+        };
+
         function createGameCard(game) {
             var card = document.createElement("div");
             card.className = "game_card";
@@ -144,18 +147,14 @@
             return card;
         }
 
-        // Function to render game cards
-        async function renderGameCards() {
+        function renderGameCards(games) {
             var container = document.getElementById("gamesContainer");
-            var games = await fetchGameData();
-
             games.forEach(function(game) {
                 var card = createGameCard(game);
                 container.appendChild(card);
             });
         }
 
-        // Function to open modal
         function openModal(modalId, title, description) {
             var modal = document.getElementById("gameModal");
             var modalTitle = document.getElementById("modalTitle");
@@ -166,14 +165,10 @@
             modalDescription.textContent = description;
         }
 
-        // Function to close modal
         function closeModal(modalId) {
             var modal = document.getElementById(modalId);
             modal.style.display = "none";
         }
-
-        // Render game cards when the page loads
-        window.onload = renderGameCards;
     </script>
 </body>
 </html>
