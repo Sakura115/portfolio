@@ -3,10 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Example Portfolio</title>
+    <title>Game Development Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .game_card {
+            margin: 10px;
+            overflow: hidden;
+            cursor: pointer; 
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            width: 200px;
+            position: relative;
+        }
+        .game_card:hover {
+            transform: scale(1.05);
+        }
+        .game_card img {
+            margin-right: 10px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+        .game_card h2 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            position: relative;
+            animation: modalZoomIn 0.3s ease-in-out;
+        }
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalZoomIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello GitHub.io !</h1>
+    <h1>Game Development Portfolio</h1>
+    <div class="container" id="gamesContainer">
+        <!-- Game cards will be dynamically added here -->
+    </div>
+
+    <!-- Modal for Game Details -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('gameModal')">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch JSON data from file
+        async function fetchGameData() {
+            const response = await fetch('./gameData.json');
+            const data = await response.json();
+            return data;
+        }
+
+        // Function to create game cards
+        function createGameCard(game) {
+            var card = document.createElement("div");
+            card.className = "game_card";
+            card.onclick = function() {
+                openModal(game.id, game.title, game.description);
+            };
+            var thumbnail = document.createElement("img");
+            thumbnail.src = game.thumbnail;
+            thumbnail.alt = game.title + " Thumbnail";
+            var title = document.createElement("h2");
+            title.textContent = game.title;
+
+            card.appendChild(thumbnail);
+            card.appendChild(title);
+
+            return card;
+        }
+
+        // Function to render game cards
+        async function renderGameCards() {
+            var container = document.getElementById("gamesContainer");
+            var games = await fetchGameData();
+
+            games.forEach(function(game) {
+                var card = createGameCard(game);
+                container.appendChild(card);
+            });
+        }
+
+        // Function to open modal
+        function openModal(modalId, title, description) {
+            var modal = document.getElementById("gameModal");
+            var modalTitle = document.getElementById("modalTitle");
+            var modalDescription = document.getElementById("modalDescription");
+
+            modal.style.display = "block";
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+        }
+
+        // Function to close modal
+        function closeModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "none";
+        }
+
+        // Render game cards when the page loads
+        window.onload = renderGameCards;
+    </script>
 </body>
 </html>
