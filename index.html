@@ -38,13 +38,15 @@
         }
         .game_card img {
             margin-right: 10px;
-            width: 80px;
-            height: 80px;
+            width: 100%;
+            height: auto;
             object-fit: cover;
+            margin: auto;
         }
         .game_card h2 {
             margin-top: 0;
             font-size: 16px;
+            text-align: center;
         }
 
         .modal {
@@ -100,6 +102,15 @@
                 transform: scale(1);
             }
         }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -107,11 +118,11 @@
     <div class="container" id="gamesContainer">
     </div>
 
-    <div id="gameModal" class="modal">
-        <div class="modal-content">
+    <div id="gameModal" class="modal" onclick="closeModal('gameModal')">
+        <div class="modal-content" onclick="event.stopPropagation();">
             <span class="close" onclick="closeModal('gameModal')">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalDescription"></p>
+            <h2 class="modalTitle"></h2>
+            <p class="modalDescription"></p>
         </div>
     </div>
 
@@ -133,7 +144,7 @@
             var card = document.createElement("div");
             card.className = "game_card";
             card.onclick = function() {
-                openModal(game.id, game.title, game.description);
+                openModal("gameModal", game.title, game.description);
             };
             var thumbnail = document.createElement("img");
             thumbnail.src = game.thumbnail;
@@ -156,10 +167,11 @@
         }
 
         function openModal(modalId, title, description) {
-            var modal = document.getElementById("gameModal");
-            var modalTitle = document.getElementById("modalTitle");
-            var modalDescription = document.getElementById("modalDescription");
+            var modal = document.getElementById(modalId);
+            var modalTitle = modal.querySelector(".modalTitle");
+            var modalDescription = modal.querySelector(".modalDescription");
 
+            modal.style.animation = "fadeIn 0.3s ease-in-out";
             modal.style.display = "block";
             modalTitle.textContent = title;
             modalDescription.textContent = description;
@@ -167,7 +179,13 @@
 
         function closeModal(modalId) {
             var modal = document.getElementById(modalId);
-            modal.style.display = "none";
+
+            modal.style.animation = "fadeOut 0.3s ease-in-out";
+            modal.addEventListener("animationend", function() {
+                if(event.animationName=="fadeOut"){
+                    modal.style.display = "none";
+                }
+            });
         }
     </script>
 </body>

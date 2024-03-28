@@ -1,7 +1,7 @@
 [
     {
         "id": "modal1",
-        "thumbnail": "game1_thumbnail.jpg",
+        "thumbnail": "./img/othello.jpg",
         "title": "Game 1 Title",
         "description": "Detailed description of Game 1."
     },
