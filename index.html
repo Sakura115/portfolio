@@ -13,6 +13,9 @@
         h1 {
             text-align: center;
         }
+        .summary{
+            text-align: center;
+        }
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -63,13 +66,22 @@
         }
         .modal-content {
             background-color: #fefefe;
-            margin: 10% auto;
+            margin: 5% auto;
             padding: 20px;
             border-radius: 8px;
             width: 80%;
+            max-width: 800px;
             position: relative;
             animation: modalZoomIn 0.3s ease-in-out;
+            text-align: center;
         }
+        
+        .modalDescription{
+            text-align: left;
+            margin: auto;
+            width: fit-content;
+        }
+        
         .close {
             color: #aaa;
             position: absolute;
@@ -81,6 +93,20 @@
         }
         .close:hover,
         .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .prev,.next {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .prev:hover,
+        .prev:focus,
+        .next:hover,
+        .next:focus {
             color: black;
             text-decoration: none;
         }
@@ -111,45 +137,69 @@
                 opacity: 0;
             }
         }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            width: fit-content;
+        }
+
+        .modalImage {
+            width: 100%;
+            margin: auto;
+        }
     </style>
 </head>
 <body>
     <h1>Portfolio</h1>
+    <p class="summary">このサイトは神奈川工科大学所属の櫻井愛莉のポートフォリオです。</p>
     <div class="container" id="gamesContainer">
     </div>
 
     <div id="gameModal" class="modal" onclick="closeModal('gameModal')">
-        <div class="modal-content" onclick="event.stopPropagation();">
-            <span class="close" onclick="closeModal('gameModal')">&times;</span>
-            <h2 class="modalTitle"></h2>
-            <p class="modalDescription"></p>
+    <div class="modal-content" onclick="event.stopPropagation();">
+        <span class="close" onclick="closeModal('gameModal')">&times;</span>
+        <div class="slideshow-container">
+            <a class="prev" onclick="changeImage('gameModal',-1)">&#10094;</a>
+            <div class="slides">
+                <img class="modalImage" src="" alt="">
+            </div>
+            <a class="next" onclick="changeImage('gameModal',1)">&#10095;</a>
         </div>
+        <h2 class="modalTitle"></h2>
+        <p class="modalDescription"></p>
+        <br>
+        <a class="playLink" href="" target="_blank">実際に遊ぶ</a>
+        <br>
+        <a class="dataLink" href="" target="_blank">このアプリのソースコードなど</a>
     </div>
+</div>
 
     <script>
         // XMLHttpRequestを使ってjsonデータを読み込む
-        let requestURL = 'gameData.json';
-        let request = new XMLHttpRequest();
+        const requestURL = 'gameData.json';
+        const request = new XMLHttpRequest();
         request.open('GET', requestURL);
         request.responseType = 'json';
         request.send();
 
         // JSONデータをJavaScriptオブジェクトに変換してゲームカードを生成
         request.onload = function () {
-            let data = request.response;
+            const data = request.response;
             renderGameCards(data);
         };
 
         function createGameCard(game) {
-            var card = document.createElement("div");
+            const card = document.createElement("div");
             card.className = "game_card";
             card.onclick = function() {
-                openModal("gameModal", game.title, game.description);
+                openModal("gameModal", game.title, game.description, game.playUrl, game.dataUrl, game.imagePaths);
             };
-            var thumbnail = document.createElement("img");
-            thumbnail.src = game.thumbnail;
-            thumbnail.alt = game.title + " Thumbnail";
-            var title = document.createElement("h2");
+            const thumbnail = document.createElement("img");
+            thumbnail.src = game.imagePaths.split(',')[0];
+            thumbnail.alt = game.title + " サムネイル";
+            const title = document.createElement("h2");
             title.textContent = game.title;
 
             card.appendChild(thumbnail);
@@ -159,34 +209,82 @@
         }
 
         function renderGameCards(games) {
-            var container = document.getElementById("gamesContainer");
+            const container = document.getElementById("gamesContainer");
             games.forEach(function(game) {
-                var card = createGameCard(game);
+                const card = createGameCard(game);
                 container.appendChild(card);
             });
         }
 
-        function openModal(modalId, title, description) {
-            var modal = document.getElementById(modalId);
-            var modalTitle = modal.querySelector(".modalTitle");
-            var modalDescription = modal.querySelector(".modalDescription");
+        function renderGameCards(games) {
+        const container = document.getElementById("gamesContainer");
+        games.forEach(function(game) {
+            const card = createGameCard(game);
+            container.appendChild(card);
+        });
+    }
 
-            modal.style.animation = "fadeIn 0.3s ease-in-out";
-            modal.style.display = "block";
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
+    let images;
+    let current = 0;//ページ変数 
+
+    function changeImage(modalId,num){//イメージの変更
+        
+        if(current+num>=0&&current+num<images.length){
+            current += num;
         }
-
-        function closeModal(modalId) {
-            var modal = document.getElementById(modalId);
-
-            modal.style.animation = "fadeOut 0.3s ease-in-out";
-            modal.addEventListener("animationend", function() {
-                if(event.animationName=="fadeOut"){
-                    modal.style.display = "none";
-                }
-            });
+        else if(current+num<0){
+            current=current+num;
+            do{
+                current = current+images.length;
+            }while(current>=0);
         }
-    </script>
+        else if(current+num>=images.length){
+            current = (current+num)%images.length;
+        }
+        
+        console.log(images[current]);
+        const modalImage=document.getElementById(modalId).querySelector(".modalImage");
+        modalImage.src=images[current];//イメージの差し替え
+        modalImage.alt = modalImage.getAttribute('alt').replace(/\d+/g, '')+(current+1);
+    };
+
+
+    function openModal(modalId, title, description, playUrl, dataUrl, imagePaths) {
+        const modal = document.getElementById(modalId);
+        const modalTitle = modal.querySelector(".modalTitle");
+        const modalImage = modal.querySelector(".modalImage");
+        const modalDescription = modal.querySelector(".modalDescription");
+        const playLink = modal.querySelector(".playLink");
+        const dataLink = modal.querySelector(".dataLink");
+
+        modal.style.animation = "fadeIn 0.3s ease-in-out";
+        modal.style.display = "block";
+        modalTitle.textContent = title;
+        modalDescription.innerHTML = description.replace(/\n/g, '<br>');
+        playLink.href = playUrl;
+        playLink.alt = title + " を実際に遊ぶページへのリンク";
+        dataLink.href = dataUrl;
+        dataLink.alt = title + " を作った際のデータファイル(ソースコードなど)へのリンク";
+
+        images = imagePaths.split(',');
+
+        console.log(images);
+
+        modalImage.src = images[0];
+        current = 0;
+        modalImage.alt = title + " プレイ画面画像"+(current+1);
+
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.animation = "fadeOut 0.3s ease-in-out";
+        modal.addEventListener("animationend", function(event) {
+            if(event.animationName=="fadeOut"){
+                modal.style.display = "none";
+            }
+        });
+    }
+</script>
 </body>
 </html>
