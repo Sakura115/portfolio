@@ -102,7 +102,10 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
         }
+
         .prev:hover,
         .prev:focus,
         .next:hover,
@@ -146,8 +149,9 @@
         }
 
         .modalImage {
-            width: 100%;
+            width: 85%;
             margin: auto;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -161,11 +165,11 @@
     <div class="modal-content" onclick="event.stopPropagation();">
         <span class="close" onclick="closeModal('gameModal')">&times;</span>
         <div class="slideshow-container">
-            <a class="prev" onclick="changeImage('gameModal',-1)">&#10094;</a>
             <div class="slides">
-                <img class="modalImage" src="" alt="">
+                <a class="prev" onclick="changeImage('gameModal',-1)">&#10094;</a>
+                    <img class="modalImage" src="" alt="">
+                <a class="next" onclick="changeImage('gameModal',1)">&#10095;</a>
             </div>
-            <a class="next" onclick="changeImage('gameModal',1)">&#10095;</a>
         </div>
         <h2 class="modalTitle"></h2>
         <p class="modalDescription"></p>
