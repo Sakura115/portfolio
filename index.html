@@ -241,7 +241,7 @@
             current=current+num;
             do{
                 current = current+images.length;
-            }while(current>=0);
+            }while(current<0);
         }
         else if(current+num>=images.length){
             current = (current+num)%images.length;
