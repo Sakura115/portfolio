@@ -160,6 +160,7 @@
     <p class="summary">このサイトは神奈川工科大学所属の櫻井愛莉のポートフォリオです。</p>
     <div class="container" id="gamesContainer">
     </div>
+    <p class="summary">調整中...</p>
 
     <div id="gameModal" class="modal" onclick="closeModal('gameModal')">
     <div class="modal-content" onclick="event.stopPropagation();">
@@ -201,7 +202,7 @@
                 openModal("gameModal", game.title, game.description, game.playUrl, game.dataUrl, game.imagePaths);
             };
             const thumbnail = document.createElement("img");
-            thumbnail.src = game.imagePaths.split(',')[0];
+            thumbnail.src = game.imagePaths[0];//.split(',')[0];
             thumbnail.alt = game.title + " サムネイル";
             const title = document.createElement("h2");
             title.textContent = game.title;
@@ -246,7 +247,7 @@
             current = (current+num)%images.length;
         }
         
-        console.log(images[current]);
+        //console.log(images[current]);
         const modalImage=document.getElementById(modalId).querySelector(".modalImage");
         modalImage.src=images[current];//イメージの差し替え
         modalImage.alt = modalImage.getAttribute('alt').replace(/\d+/g, '')+(current+1);
@@ -270,9 +271,9 @@
         dataLink.href = dataUrl;
         dataLink.alt = title + " を作った際のデータファイル(ソースコードなど)へのリンク";
 
-        images = imagePaths.split(',');
+        images = imagePaths;//.split(',');
 
-        console.log(images);
+        //console.log(images);
 
         modalImage.src = images[0];
         current = 0;

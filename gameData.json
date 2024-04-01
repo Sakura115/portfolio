@@ -2,25 +2,28 @@
     {
         "id": "modal1",
         "title": "Othello Game",
-        "imagePaths": "./img/othello_game/othello.jpg,./img/othello_game/IMG.jpg",
+        "imagePaths": [
+            "./img/othello_game/1.png",
+            "./img/othello_game/2.png",
+            "./img/othello_game/3.png",
+            "./img/othello_game/4.png"
+          ]
+          ,
         "playUrl":"https://sakura115.github.io/Othello-Game/othellogame_webApp/index.html",
         "dataUrl":"https://github.com/Sakura115/Othello-Game/tree/main/Othello_Game/Assets/Sclipts",
-        "description": " 開発環境:  Unity(2020.3.33f1)\n開発言語:   C#\n開発時期:   2022年7月頃\n開発期間:  2カ月程\n作成人数:  1人\n担当箇所:  プログラミング、アニメーション、モデリング、UIデザイン\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\n3D空間でマウス操作によりオセロをするゲーム\n\n[工夫点]\nより感覚的に分かりやすい操作感になるように工夫しました。\nまた、アニメーションを用いることで3Dならではの高級感を演出できるように工夫しました。"
+        "description": "開発環境:  Unity(2020.3.33f1)\n開発言語:   C#\n開発時期:   2022年7月頃\n開発期間:  2カ月程\n作成人数:  1人\n担当箇所:  プログラミング、アニメーション、モデリング、UIデザイン\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\n3D空間でマウス操作によりオセロをするゲーム\n\n[工夫点]\nより感覚的に分かりやすい操作感になるように工夫しました。\nまた、アニメーションを用いることで3Dならではの高級感を演出できるように工夫しました。"
     },
     {
         "id": "modal2",
-        "title": "Game 2 Title",
-        "imagePaths": "game2_thumbnail",
-        "dataUrl":"https://github.com/Sakura115/Othello-Game/tree/main/Othello_Game/Assets",
-        "playUrl":"https://sakura115.github.io/Othello-Game/othellogame_webApp/index.html",
-        "description": "Detailed description of Game 2."
-    },
-    {
-        "id": "modal3",
-        "title": "Game 3 Title",
-        "imagePaths": "game3_thumbnail",
-        "dataUrl":"https://github.com/Sakura115/Othello-Game/tree/main/Othello_Game/Assets",
-        "playUrl":"https://sakura115.github.io/Othello-Game/othellogame_webApp/index.html",
-        "description": "Detailed description of Game 3."
+        "title": "にゃんにゃんフットボール",
+        "imagePaths": [
+            "./img/catSoccer/1.jpg",
+            "./img/catSoccer/2.jpg",
+            "./img/catSoccer/3.jpg",
+            "./img/catSoccer/4.jpg"
+        ],
+        "dataUrl":"https://github.com/Sakura115/CatSoccer/tree/main/sourceCode",
+        "playUrl":"https://sakura115.itch.io/cat-soccer?secret=XU1bdeTbTShMOYuhruTakum2eg",
+        "description": "開発環境:  Godot_v4.0.3\n開発言語:   GDScript\n開発時期:   2023年7月頃\n開発期間:  1カ月程\n作成人数:  3人\n担当箇所:  メインゲーム部分のプログラム・レイアウト\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\n猫がスリッパを投げてビリヤードの要領でボールをはじき、ゴールを狙うサッカーゲーム。\n自動操作の敵と対戦する。\n\n[工夫点]\nスリッパを投げる際に威力や方向をマウスドラックで決めることで、\nより感覚的に操作できるように工夫しました。\n\n※以下のリンクにあるソースコードは自分の担当部位のみアップロードしています。"
     }
 ]
