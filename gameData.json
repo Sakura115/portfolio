@@ -30,10 +30,10 @@
         "id": "modal3",
         "title": "ネズミの戦争",
         "imagePaths": [
-            "./img/mice_cats/1.png",
-            "./img/mice_cats/2.png",
-            "./img/mice_cats/3.png",
-            "./img/mice_cats/4.png"
+            "./img/mice_cats/1.jpg",
+            "./img/mice_cats/2.jpg",
+            "./img/mice_cats/3.jpg",
+            "./img/mice_cats/4.jpg"
         ],
         "dataUrl":"https://github.com/Sakura115/mice_cats/tree/main/mice_cats/code",
         "playUrl":"https://sakura115.itch.io/mice-cats?secret=mkyeNMzP5ljdnicpyFbn223HPWw",
