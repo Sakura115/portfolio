@@ -25,5 +25,18 @@
         "dataUrl":"https://github.com/Sakura115/CatSoccer/tree/main/sourceCode",
         "playUrl":"https://sakura115.itch.io/cat-soccer?secret=XU1bdeTbTShMOYuhruTakum2eg",
         "description": "開発環境:  Godot_v4.0.3\n開発言語:   GDScript\n開発時期:   2023年7月頃\n開発期間:  1カ月程\n作成人数:  3人\n担当箇所:  メインゲーム部分のプログラム・レイアウト\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\n猫がスリッパを投げてビリヤードの要領でボールをはじき、ゴールを狙うサッカーゲーム。\n自動操作の敵と対戦する。\n\n[工夫点]\nスリッパを投げる際に威力や方向をマウスドラックで決めることで、\nより感覚的に操作できるように工夫しました。\n\n※以下のリンクにあるソースコードは自分の担当部位のみアップロードしています。"
+    },
+    {
+        "id": "modal3",
+        "title": "ネズミの戦争",
+        "imagePaths": [
+            "./img/mice_cats/1.png",
+            "./img/mice_cats/2.png",
+            "./img/mice_cats/3.png",
+            "./img/mice_cats/4.png"
+        ],
+        "dataUrl":"https://github.com/Sakura115/mice_cats/tree/main/mice_cats/code",
+        "playUrl":"https://sakura115.itch.io/mice-cats?secret=mkyeNMzP5ljdnicpyFbn223HPWw",
+        "description": "開発環境:  Godot_v3.5.1\n開発言語:   GDScript\n開発時期:   2023年7月頃\n開発期間:  1カ月程\n作成人数:  1人\n担当箇所:  プログラミング、アニメーション、モデリング、UIデザイン\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\nネズミが猫を挑発しながら逃げて指定の位置まで猫を誘導するゲーム。\nストーリー部分とアクション部分の2つに分かれる。\n\n[工夫点]\nストーリーを調節しやすいように埋め込むのではなくテキストファイルに別で記入し読み込むようにしました。\nまた、アクション部分では自由にカメラを回すことができるため壁などへのめり込みを抑えるよう工夫しました。"
     }
 ]
