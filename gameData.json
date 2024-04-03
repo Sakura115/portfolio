@@ -1,7 +1,24 @@
 [
     {
+        "id": "modal4",
+        "title": "チヨとココのお母さんが風邪引いた！",
+        "thumbnailPath":"./img/novel2D/2.png",
+        "imagePaths": [
+            "./img/novel2D/1.png",
+            "./img/novel2D/2.png",
+            "./img/novel2D/3.png",
+            "./img/novel2D/4.png",
+            "./img/novel2D/5.png"
+          ]
+          ,
+        "playUrl":"https://sakura115.github.io/novel2D/web/Final_task202107/data/index.html",
+        "dataUrl":"https://github.com/Sakura115/novel2D/tree/main/exe/Final_task202107/",
+        "description": "開発環境:   Processing 3.5.4\n開発言語:   Java\n開発時期:   2021年7月頃\n開発期間:  3週間程\n作成人数:  1人\n担当箇所:  プログラミング、レイアウト、UIデザイン、イラスト作成、ストーリー作成\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\n始めて作った本格的なプログラム作品です。\n内容は2Dノベルゲームで選択により結末が変化します。\n選択によってはミニゲームが挟まります。\n\n[工夫点]\nストーリーをプログラムに埋め込むのではなく、\n別のテキストファイルとして作ることでストーリーの編集がしやすいようにしました。\nまた、円滑に遊ぶためにストーリー分岐点まで遡れる機能を追加することでよりストレスなく遊べるように工夫しました。\n\n[ストーリー概要]\n猫と話せる5歳の女の子のチヨと飼い猫のココが風邪を引いたお母さんのためにいろいろする。\nプレイヤーの選択によって池へ魚を獲りに行ったり、引き出しの中から薬を探したりする。\n\n以下のソースコードなどのフォルダのうち、ソースコードに当たるものは「Final_task202107.pde」です。"
+    },
+    {
         "id": "modal1",
         "title": "Othello Game",
+        "thumbnailPath":"./img/othello_game/1.png",
         "imagePaths": [
             "./img/othello_game/1.png",
             "./img/othello_game/2.png",
@@ -11,11 +28,12 @@
           ,
         "playUrl":"https://sakura115.github.io/Othello-Game/othellogame_webApp/index.html",
         "dataUrl":"https://github.com/Sakura115/Othello-Game/tree/main/Othello_Game/Assets/Sclipts",
-        "description": "開発環境:  Unity(2020.3.33f1)\n開発言語:   C#\n開発時期:   2022年7月頃\n開発期間:  2カ月程\n作成人数:  1人\n担当箇所:  プログラミング、アニメーション、モデリング、UIデザイン\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\n3D空間でマウス操作によりオセロをするゲーム\n\n[工夫点]\nより感覚的に分かりやすい操作感になるように工夫しました。\nまた、アニメーションを用いることで3Dならではの高級感を演出できるように工夫しました。"
+        "description": "開発環境:  Unity(2020.3.33f1)\n開発言語:   C#\n開発時期:   2022年7月頃\n開発期間:  2カ月程\n作成人数:  1人\n担当箇所:  プログラミング、アニメーション、モデリング、UIデザイン\n対応機種:   PC(スマートフォン未対応)\n\n[内容]\n3D空間でマウス操作によりオセロをするゲーム\n\n[工夫点]\nマウスをかざした際に駒を置ける位置には青い駒を、置けない位置には赤い駒を表示することで、\nより感覚的に操作できるように工夫しました。\nまた、アニメーションを用いることで3Dならではの高級感を演出できるように工夫しました。"
     },
     {
         "id": "modal2",
         "title": "にゃんにゃんフットボール",
+        "thumbnailPath":"./img/catSoccer/1.jpg",
         "imagePaths": [
             "./img/catSoccer/1.jpg",
             "./img/catSoccer/2.jpg",
@@ -29,6 +47,7 @@
     {
         "id": "modal3",
         "title": "ネズミの戦争",
+        "thumbnailPath":"./img/mice_cats/4.jpg",
         "imagePaths": [
             "./img/mice_cats/1.jpg",
             "./img/mice_cats/2.jpg",
